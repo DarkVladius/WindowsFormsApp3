@@ -6,21 +6,28 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp3
 {
-     class QuadraticEquation
+    class QuadratitEquation
     {
-        public (double, double) X1andX2 { get; set;}
-        public double C { get; set; }
-        public double A { get; set; }
-        public double B { get; set; }
-        public double D { get; set; }
-        public static double GetD(double A, double B, double C) 
+        double a, b, c, d;
+
+        public QuadratitEquation(double a, double b, double c)
         {
-           return B * B - 4 * A * C;
+            this.a = a;
+            this.b = b;
+            this.c = c;
+            
+            CalculateD();
         }
-      public  static (double X1,double X2) GetX1AndX2(double A, double B, double C, double D)
+
+        public string D => d.ToString();
+
+        public string X1 => d >= 0 ? ((-b + Math.Sqrt(d)) / 2 * a).ToString() : "корня нет";
+
+        public string X2 => d > 0 ? ((-b - Math.Sqrt(d)) / 2 * a).ToString() : "корня нет";
+
+        private void CalculateD()
         {
-          
-            return ((-1 * B - Math.Sqrt(D))/2*A, (-1 * B + Math.Sqrt(D)) / 2 * A);
+            d = Math.Pow(b, 2) - 4 * a * c;
         }
     }
 }
